@@ -14,7 +14,7 @@
           </thread>
 
           <tbody>
-            <%= @users.each do |user| %>
+            <% @users.each do |user| %>
               <tr>
                 <td><% if  user.profile_image.atached?%>
                       <%= image_tag user.get_profile_image(100,100) %>
