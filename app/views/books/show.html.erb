@@ -1,12 +1,43 @@
-<div class="container my-5">
+<div class="container my-2">
   <div class="row">
-    <%=render 'book' %>
+    <div class="col-md-3">
+        <h1>User info</h1>
+        <% if @book.user.profile_image.attached? %>
+          <%= image_tag @book.user.profile_image,size: "100x100" %>
+        <% else %>
+          <%= image_tag 'noImage',size: "100x100" %>
+        <% end %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <th><%= @book.user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th <%= @book.user.introduction %>></th>
+            </tr>
+          </tbody>
+        </table>
+        <%=link_to edit_user_path(@book.user), class: 'btn btn-outline-secondary btn-block' do %>
+          <i class="fa-solid fa-user-gear"></i>
+        <% end %>
+
+        <h1>New book</h1>
+        <%= form_with model: Book.new do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        <h4>Opinion</h4>
+        <%= f.text_area :body %><br>
+        <%= f.submit 'Create Book', class: 'btn btn-success' %>
+        <% end %>
+      </div>
     <div class="col-md-8 offset-md-1">
       <h1>Book detail</h1>
       <table class="table">
         <tbody>
           <tr>
-            <td><a href="users/<%=@book.user.id %>">
+            <td><a href="/users/<%=@book.user.id %>">
                     <% if @book.user.profile_image.attached? %>
                       <%= image_tag @book.user.profile_image,size:"100x100" %>
                     <% else %>
