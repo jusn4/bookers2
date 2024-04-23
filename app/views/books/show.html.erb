@@ -15,7 +15,7 @@
             </tr>
             <tr>
               <th>introduction</th>
-              <th <%= @book.user.introduction %>></th>
+              <th><%= @book.user.introduction %></th>
             </tr>
           </tbody>
         </table>
@@ -30,7 +30,7 @@
           <%= f.text_field :title, id:"inputTitle", class:"form-control" %>
         </div>
         <div class="form-group">
-          <label for="inputOpinion">Oinion</label>
+          <label for="inputOpinion">Opinion</label>
           <%= f.text_area :body, id:"inputOpinion", class:"form-control" %>
         </div>
         <div class="form-group">
